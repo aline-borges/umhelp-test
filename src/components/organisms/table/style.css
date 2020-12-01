@@ -1,0 +1,33 @@
+/* TABLE */
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  font-size: 1.8rem;
+}
+
+.products-row {
+  border: 2px solid #F9F9F9;
+  padding: 0.8rem;
+}
+
+.products-attribute,
+.products-item {
+  padding: 1.6rem;
+  background-color: #000000;
+  color: #F9F9F9; 
+  text-align: center;
+}
+
+.products-item {
+  background-color: #F9F9F9;
+  color: #000000; 
+}
+
+.edit-icon {
+  width: 4rem;
+  margin-right: 1rem;
+}
