@@ -10,10 +10,18 @@
   text-align: center;
   min-width: 40rem;
   padding: 0.8rem;
-  margin-right: 5rem;
   outline: none;
 }
 
 .search-input::placeholder {
   color: #000000bd;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 414px) {
+  .search-input {
+    margin: 3rem 0 0;
+    min-width: fit-content;
+  }
 }

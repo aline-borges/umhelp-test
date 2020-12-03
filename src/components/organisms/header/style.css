@@ -6,3 +6,15 @@
   align-items: center;
   margin-top: 1rem;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 414px) {
+  .main-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+  }
+}

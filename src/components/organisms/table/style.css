@@ -1,12 +1,10 @@
 /* TABLE */
 
 .products-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5rem;
+  margin: 5rem 1rem ;
   font-size: 1.8rem;
+  overflow-x: auto;
+  width: 100%;
 }
 
 .products-row {
@@ -37,7 +35,30 @@
   color: #000000; 
 }
 
+.products-table {
+  min-width: 835px;
+  margin: 0 auto;
+}
+
 .edit-icon {
   width: 4rem;
   margin-right: 1rem;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 900px) {
+  .product-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 414px) {
+  .product-list {
+    overflow-x: auto;
+  }
+
 }

@@ -1,14 +1,15 @@
 /* PRODUCT ITEM */
 
 .product {
-  display: flex;
-  flex-direction: column;
-  font-size: 2.4rem;
   margin-top: 2rem;
+  max-width: 100%;
 }
 
 .product-form {
-  min-width: 70rem;
+  flex-direction: column;
+  font-size: 2.4rem;
+  max-width: 100%;
+  width: 70rem;
 }
 
 .title-form {
