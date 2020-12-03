@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
 
-import Input from '../../atoms/input/index'
-import Button from '../../atoms/buttons/index'
+import Input from '../../atoms/input'
+import Button from '../../atoms/buttons/button'
 
 import create from '../../../assets/icons/create.svg'
 
@@ -12,6 +12,7 @@ const Product = () => {
     productName: '',
     price: '',
     stock: '',
+    stockPrice: ''
   })
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const Product = () => {
       productName: '',
       price: '',
       stock: '',
+      stockPrice: '',
     })
   }, [])
 
@@ -48,6 +50,7 @@ const Product = () => {
       productName: '',
       price: '',
       stock: '',
+      stockPrice: product.price * product.stock,
     })
   }
 

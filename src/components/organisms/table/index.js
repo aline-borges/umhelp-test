@@ -1,7 +1,8 @@
 import React from 'react'
 import './style.css'
 
-import { EditButton } from '../../atoms/buttons/index'
+import EditButton from '../../atoms/buttons/editButton/'
+import StockButton from '../../atoms/buttons/stockButton/'
 
 import settings from '../../../assets/icons/settings.svg'
 import del from '../../../assets/icons/delete.svg'
@@ -23,7 +24,15 @@ const Table = (props) => {
       className="products-item">{product.price}</td>
       <td 
       id="product-stock"
-      className="products-item">{product.stock}</td>
+      className="products-item">
+        <StockButton 
+        text="-"
+        onClick={() =>props.onChangeStock(product.id, 'sub')}/>
+          {product.stock}
+        <StockButton 
+        text="+"
+        onClick={() =>props.onChangeStock(product.id, 'add')}/>
+      </td>
       <td 
       id="product-stock-price"
       className="products-item">R${product.price * product.stock}</td>

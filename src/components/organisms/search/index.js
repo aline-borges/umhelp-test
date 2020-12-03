@@ -2,22 +2,14 @@ import React from 'react'
 import './style.css'
 
 import SearchInput from '../../atoms/searchInput/index'
-import Button from '../../atoms/buttons/index'
 
-import search from '../../../assets/icons/search.svg'
-
-const Search = () => {
+const Search = (props) => {
   return(
     <section className="search-form">
       <SearchInput 
       id="search-input"
-      placeholder="Digite o nome do produto" 
-      />
-      <Button
-      id="search-button"
-      text="Pesquisar" 
-      src={search} 
-      alt="search-button" 
+      placeholder="Digite o nome do produto"
+      onChange={props.onSearch}
       />
     </section>
   )
