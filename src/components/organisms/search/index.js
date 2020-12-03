@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-import Input from '../../atoms/input/index'
+import SearchInput from '../../atoms/searchInput/index'
 import Button from '../../atoms/buttons/index'
 
 import search from '../../../assets/icons/search.svg'
@@ -9,7 +9,7 @@ import search from '../../../assets/icons/search.svg'
 const Search = () => {
   return(
     <section className="search-form">
-      <Input 
+      <SearchInput 
       id="search-input"
       placeholder="Digite o nome do produto" 
       />

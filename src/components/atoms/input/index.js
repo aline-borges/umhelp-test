@@ -1,29 +1,23 @@
 import React from 'react'
 import './style.css'
 
-export const Label = (props) => {
-  return(
-    <label id={props.id}>
-      {props.attribute}
-    </label>
-  )
-}
-
-export const Value = (props) => {
-  return(
-    <input 
-    id={props.id}
-    className="product-value" />
-  )
-}
-
 const Input = (props) => {
   return(
-    <input 
-    id={props.id}
-    className="search-input" 
-    placeholder={props.placeholder}
-    />
+    <div className="product-attribute">
+      <label>
+        {props.attribute}
+      </label>
+      <input 
+      className="product-value"
+      type={props.type}
+      placeholder={props.placeholder}
+      readOnly={props.readOnly}
+      onChange={props.onChangeText}
+      name={props.name}
+      value={props.value}
+      required={props.required}
+      />
+    </div>
   )
 }
 
