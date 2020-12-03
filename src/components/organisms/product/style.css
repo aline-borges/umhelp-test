@@ -1,10 +1,14 @@
 /* PRODUCT ITEM */
 
-.product-form {
+.product {
   display: flex;
   flex-direction: column;
   font-size: 2.4rem;
   margin-top: 2rem;
+}
+
+.product-form {
+  min-width: 70rem;
 }
 
 .title-form {
