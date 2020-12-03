@@ -7,7 +7,7 @@ const SearchInput = (props) => {
     className="search-input" 
     type={props.type}
     placeholder={props.placeholder}
-    onChange={props.onChangeText}
+    onChange={props.onChange}
     />
   )
 }
