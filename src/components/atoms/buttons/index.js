@@ -5,7 +5,9 @@ export const EditButton = (props) => {
   return(
     <button 
     id={props.id}
-    className="edit-button">
+    className="edit-button"
+    onClick={props.onClick}
+    >
       <img 
       className="edit-icon" 
       src={props.src} 
@@ -18,7 +20,9 @@ const Button = (props) => {
   return(
     <button 
     id={props.id}
-    className="button">
+    className="button"
+    onClick={props.onClick}
+    >
       {props.text}
       <img 
       className="button-icon" 
