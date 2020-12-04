@@ -6,37 +6,56 @@ import Button from '../../atoms/buttons/button'
 
 import create from '../../../assets/icons/create.svg'
 
-const Product = () => {
+const Product = (props) => {
   const [product, setProduct] = useState({
     id: 1,
     productName: '',
     price: '',
     stock: '',
-    stockPrice: ''
+    stockPrice: 0
   })
 
   useEffect(() => {
-    const nextId = getNextId()
     setProduct({
-      id: nextId,
+      id: props.nextId,
       productName: '',
       price: '',
       stock: '',
-      stockPrice: '',
+      stockPrice: 0,
     })
-  }, [])
+  }, [props.nextId])
 
   const handleChange = (event) => {
     const { value, name } = event.target;
+    if (name === 'stock') {
+        setProduct(prevState => ({
+            ...prevState,
+            [name]: value,
+            stockPrice: prevState.price * value
+        }))
+        return;
+    }
+    if (name === 'price') {
+        setProduct(prevState => ({
+            ...prevState,
+            [name]: value,
+            stockPrice: prevState.stock * value
+        }))
+        return;
+    }
     setProduct(prevState => ({
-      ...prevState,
-      [name]: value
+        ...prevState,
+        [name]: value
     }))
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if(product.stock === '0') {
+    if (parseFloat(product.price) === 0 || product.price === '') {
+      alert('Preço não pode ser 0')
+      return
+    }
+    if(parseFloat(product.stock) === 0 || product.stock === '') {
       alert('Estoque não pode ser abaixo de 1')
       return
     }
@@ -44,28 +63,15 @@ const Product = () => {
     products.push(product)
     const orderedProducts = products.sort((a, b) => a.id - b.id)
     localStorage.setItem('products', JSON.stringify(orderedProducts))
-    const nextId = getNextId()
     setProduct({
-      id: nextId,
+      id: props.nextId,
       productName: '',
       price: '',
       stock: '',
-      stockPrice: product.price * product.stock,
+      stockPrice: 0,
     })
-  }
-
-  const getNextId = () => {
-    const products = JSON.parse(localStorage.getItem('products')) || []
-    if (!products.length) {
-      return 1
-    }
-    const nextId = products.find((product, index) => {
-      return product.id - 1 !== index
-    })
-
-    if (nextId) return nextId.id - 1
-
-    return products.length + 1
+    props.updateProducts(products)
+    props.getNextId()
   }
 
   return(
@@ -85,7 +91,7 @@ const Product = () => {
         attribute="Nome:"
         name="productName"
         onChangeText={handleChange}
-        value={product.name}
+        value={product.productName}
         required="required"
         />
 
