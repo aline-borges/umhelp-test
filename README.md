@@ -1,13 +1,13 @@
 <p align="center"> 
-  <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/images/readme-banner.png?raw=true">
+  <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/assets/images/readme-banner.png?raw=true">
 </p>
 
 <a href="https://instock-umhelptest.netlify.app/">
-  <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/images/demo-badge.png?raw=true">
+  <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/assets/images/demo-badge.png?raw=true">
 </a>  
 
 <p align="center"> 
-  <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/images/instock-screen.png?raw=true">
+  <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/assets/images/instock-screen.png?raw=true">
 </p>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c14d260a-791a-43e6-a433-2943c8b4880d/deploy-status)](https://app.netlify.com/sites/instock-umhelptest/deploys)
