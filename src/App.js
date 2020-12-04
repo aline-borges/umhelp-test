@@ -12,6 +12,7 @@ import './assets/styles/global-style.css'
 
 const App = () => {
   const [products, setProducts] = useState([])
+  const [nextId, setNextId] = useState(1)
   const [sort, setSort] = useState({
     key: 'id',
     ascending: true
@@ -19,17 +20,18 @@ const App = () => {
 
   useEffect(() => {
     const productsList = JSON.parse(localStorage.getItem('products')) || []
+    getNextId()
     setProducts(productsList)
   }, [])
 
   const handleDelete = (id) => {
     const filteredProducts =  products.filter((product) => product.id !== id )
-    
     setProducts(filteredProducts)
     localStorage.setItem('products', JSON.stringify(filteredProducts))
+    getNextId()
   }
 
-  const handleSort = (tableField) => { 
+  const handleSort = (tableField) => {
     if (sort.key === tableField) {
       setSort({
         key: tableField,
@@ -47,10 +49,16 @@ const App = () => {
 
   const sortProducts = (key, ascending) => {
     const sortedProducts = products.sort((a, b) => {
-      if (a[key] < b[key]) {
+      const firstCondition = key === 'stock' || key === 'stockPrice' || 
+      key === 'id' ? parseFloat(a[key]) < parseFloat(b[key]) : 
+      a[key].toLowerCase() < b[key].toLowerCase()
+      const secondCondition = key === 'stock' || key === 'stockPrice' || 
+      key === 'id' ? parseFloat(a[key]) > parseFloat(b[key]) : 
+      a[key].toLowerCase() > b[key].toLowerCase()
+      if (firstCondition) {
         return ascending ? -1 : 1
       }
-      if (a[key] > b[key]) {
+      if (secondCondition) {
         return ascending ? 1 : -1
       }
       return 0
@@ -61,7 +69,7 @@ const App = () => {
   const handleSearch = (event) => {
     const { value } = event.target
     const productsList = JSON.parse(localStorage.getItem('products')) || []
-    const filteredProducts = productsList.filter(product => 
+    const filteredProducts = productsList.filter(product =>
       product.productName.toLowerCase().startsWith(value.toLowerCase()))
     setProducts(filteredProducts)
   }
@@ -80,18 +88,38 @@ const App = () => {
       handleDelete(id)
       return
     }
+    const newStockPrice = newStock * changedProduct.price
     changedProduct.stock = newStock
+    changedProduct.stockPrice = newStockPrice
     const newProducts = products.filter(product => product.id !== id)
     newProducts.splice(index, 0, changedProduct)
     setProducts(newProducts)
     localStorage.setItem('products', JSON.stringify(newProducts))
   }
 
+  const getNextId = () => {
+    const products = JSON.parse(localStorage.getItem('products')) || []
+    if (!products.length) {
+      setNextId(1)
+      return
+    }
+    const nextId = products.find((product, index) => {
+      return product.id - 1 !== index
+    })
+
+    if (nextId) {
+      setNextId(nextId.id - 1)
+      return
+    }
+
+    setNextId(products.length + 1)
+  }
+
   return (
     <>
       <Container>
         <Header />
-        <Product />
+        <Product updateProducts={setProducts} nextId={nextId} getNextId={getNextId} />
         <Search onSearch={handleSearch} />
         <Table
           onDelete={handleDelete}
