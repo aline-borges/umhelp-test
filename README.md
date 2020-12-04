@@ -2,9 +2,11 @@
   <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/assets/images/readme-banner.png?raw=true">
 </p>
 
-<a href="https://instock-umhelptest.netlify.app/">
-  <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/assets/images/demo-badge.png?raw=true">
-</a>  
+<p align="center">
+  <a href="https://instock-umhelptest.netlify.app/">
+    <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/assets/images/demo-badge.png?raw=true">
+  </a>
+</p> 
 
 <p align="center"> 
   <img src="https://github.com/aline-borges/umhelp-test/blob/master/src/assets/images/instock-screen.png?raw=true">
